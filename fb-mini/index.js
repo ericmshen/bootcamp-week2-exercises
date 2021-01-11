@@ -1,0 +1,1 @@
+const knex = Knex(knexfile.development)
