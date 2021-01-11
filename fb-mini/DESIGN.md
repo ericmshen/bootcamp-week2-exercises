@@ -19,7 +19,7 @@ Each post can be made by a specific user, which warrants the following the attri
 * id (int): a unique post id, which can be used as the key
 * user_id (int): referring to the id (in table Users) of the user who made the post. This is a one-to-many relationship (one user id might be associated with many posts)
 * content (string): the post's (text) content, which we can cap at 4000 characters
-* date (date): when the post was made
+* post_date (date): when the post was made
 * likes (int): the number of likes the post has; as a future modification this could hold a collection of user_ids, signifying the particular users who've liked the post
 
 # Friends
@@ -27,6 +27,6 @@ Friendships can be made between any two users. With the specification of a reque
 * id (int): a unique id to represent each friend request sent
 * requestor_id (int): the id of the user who sent the friend request
 * requested_id (int): the id of the user who received the friend request; these are references to the id in the users table, which represents a many-to-many relationship (each user can request many friend requests, each user can receive many friend requests)
-* status (bool): true for accepted, false for rejected; to keep things succinct, a false response could prompt the deletion of the entry
-* date (date): when the request was sent
+* status (string): accepted, rejected, pending
+* request_date (date): when the request was sent
 * type (string): optional - could specify categories such as acquaintances, close friends, relationships, etc.
