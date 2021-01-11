@@ -5,7 +5,7 @@ casual.define('post', () => ({
     id: casual.uuid,
     user_id: casual.random_element(userData).id,
     content: casual.string,
-    post_date: casual.date,
+    post_date: casual.date(format = 'YYYY-MM-DD'),
     likes: casual.integer(from = 0, to = 100)
 }))
 

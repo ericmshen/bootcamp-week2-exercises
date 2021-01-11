@@ -1,5 +1,5 @@
 
-exports.up = async knex => knex.schema.createTable('users', table => {
+exports.up = async knex => knex.schema.createTable('friends', table => {
     table
         .uuid('id')
         .notNullable()

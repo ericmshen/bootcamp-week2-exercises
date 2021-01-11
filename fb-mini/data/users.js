@@ -5,7 +5,7 @@ casual.define('user', () => ({
   email: casual.email,
   first_name: casual.name,
   last_name: casual.name,
-  date_of_birth: casual.date(),
+  date_of_birth: casual.date(format = 'YYYY-MM-DD'),
   gender: casual.random_element(['Male', 'Female', 'Other']),
   password: casual.password,
   bio: casual.description,

@@ -6,7 +6,7 @@ casual.define('friendship', () => ({
     requestor_id: casual.random_element(userData).id,
     requested_id: casual.random_element(userData).id,
     status: casual.random_element(['Accepted', 'Rejected', 'Pending']),
-    request_date: casual.date,
+    request_date: casual.date(format = 'YYYY-MM-DD'),
     type: casual.random_element(['Acquaintances', 'Close Friends', 'Relationship'])
 }))
 
