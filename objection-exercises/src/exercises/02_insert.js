@@ -5,17 +5,26 @@ const casual = require('casual')
 // Import models
 
 const run = async () => {
-  // Write Queries and Logs Here !!!
-
   // Insert yourself in the users table
-  // at every database call, add await
-  const myself = await User.query().insert({
-
-  }).returning('*')
-
-  console.log(myself)
-
-  // Insert a pet belonging to you (get your ID from Postico or DBeaver)
+  // using a transaction from the afternoon session to 'bundle' the actions together
+  try {
+    const insertSelf = await User.transaction(async trx => {
+      const myself = await User.query(trx).insert({
+          email: 'ericshen@college.harvard.edu',
+          firstName: 'Eric',
+          lastName: 'Shen',
+          age: 18
+      }).returning('*')
+      const pet = await myself.$relatedQuery('pets', trx).insert({
+        type: 'DOG', name: 'Mark'
+      })
+      return pet
+    })
+    console.log(insertSelf)
+    cleanup()
+  } catch(err) {
+    console.log(err)
+  }
 
   // -----
   cleanup()

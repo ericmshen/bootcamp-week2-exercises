@@ -2,8 +2,6 @@ const cleanup = require('../lib/cleanup')
 // Import models
 
 const run = async () => {
-  // Write Queries and Logs Here !!!
-
   // Get all users and their pets
 
   // Get all users, their pets, AND their children

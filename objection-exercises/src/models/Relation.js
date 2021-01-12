@@ -1,5 +1,5 @@
 // Write your relation model here!
-const { ManyToManyRelation } = require('./BaseModel')
+const { ManyToManyRelation, HasManyRelation } = require('./BaseModel')
 const BaseModel = require('./BaseModel')
 
 class Relation extends BaseModel {
@@ -9,14 +9,26 @@ class Relation extends BaseModel {
     static get relationMappings() {
         const User = require('./User')
         return {
-            user: {
+            children: {
                 relation: ManyToManyRelation,
                 modelClass: User,
                 join: {
                     from: 'users.id',
                     through: {
-                        from: 'friends.parentId',
-                        to: 'friends.childId',
+                        from: 'relations.parentId',
+                        to: 'relations.childId',
+                    },
+                    to: 'users.id',
+                },
+            },
+            parents: {
+                relation: ManyToManyRelation,
+                modelClass: User,
+                join: {
+                    from: 'users.id',
+                    through: {
+                        from: 'relations.childId',
+                        to: 'relations.parentId',
                     },
                     to: 'users.id',
                 },
