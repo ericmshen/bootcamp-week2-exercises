@@ -9,7 +9,6 @@ const run = (async () => {
 
   // Get all pets
 
-
   // Get the name and age of all users
 
 
