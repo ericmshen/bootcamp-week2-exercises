@@ -1,9 +1,23 @@
-const { HasManyRelation } = require('./BaseModel')
+const { HasManyRelation, ManyToManyRelation } = require('./BaseModel')
 const BaseModel = require('./BaseModel')
 
 class User extends BaseModel {
   static get tableName() {
     return 'users'
+  }
+
+  static get virtualAttributes() {
+    return ['userFullName', 'userHasEduEmail']
+  }
+
+  fullName() {
+    return `${this.firstName} ${this.lastName}`
+  }
+
+  userHasEduEmail() {
+    const useremail = this.email
+    console.log(typeof(useremail))
+    return useremail.indexOf('.edu') !== -1
   }
 
   static get relationMappings() {
